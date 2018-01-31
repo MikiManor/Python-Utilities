@@ -50,20 +50,24 @@ def getRegKeyValue(i_keyPath, i_hostName, i_valueToFind):
 '''
 This is Logger Handler Crerator, it uses the properties of the calling program and returns Logger handler
 with .log and .error files handlers.
-The log file is rotating every 50MB (10 files total)
+The log file is rotating every 10MB (10 files total)
 '''
 def loggerUtil():
     import os
     import logging
     import logging.handlers
     import inspect
+
     callingProgramProps = inspect.stack()[1]
     callingProgramPath = inspect.stack()[1][1]
     callingFunctionName = inspect.stack()[1][3]
     callingProgramFolderName = os.path.basename(os.path.dirname(os.path.abspath( callingProgramPath )))
     callingProgramFileName = str((os.path.basename(callingProgramPath).split("."))[:-1][0])
-    logFile =  callingProgramFolderName + ".log"
-    errorFile = callingProgramFolderName + ".error"
+    logsFolderName = os.path.join(os.path.dirname(callingProgramPath), "logs")
+    if not os.path.exists(logsFolderName):
+        os.makedirs(logsFolderName)
+    logFile = os.path.join(logsFolderName, callingProgramFolderName + ".log")
+    errorFile = os.path.join(logsFolderName, callingProgramFolderName + ".error")
     # create logger with
     loggerHandler = logging.getLogger(callingProgramFolderName + "::" + callingProgramFileName + "::" + callingFunctionName)
     loggerHandler.setLevel(logging.DEBUG)
