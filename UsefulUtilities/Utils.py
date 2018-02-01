@@ -61,11 +61,11 @@ def loggerUtil():
 
     callingProgramProps = inspect.stack()[1]
     callingProgramPath = inspect.stack()[1][1]
-    executionDir = sys.argv[0]
+    executionDir = sys.argv[1]
     callingFunctionName = inspect.stack()[1][3]
     callingProgramFolderName = os.path.basename(os.path.dirname(os.path.abspath( callingProgramPath )))
     callingProgramFileName = str((os.path.basename(callingProgramPath).split("."))[:-1][0])
-    logsFolderName = os.path.join(os.path.dirname(executionDir), "logs")
+    logsFolderName = os.path.join(executionDir, "logs")
     if not os.path.exists(logsFolderName):
         os.makedirs(logsFolderName)
     logFile = os.path.join(logsFolderName, callingProgramFolderName + ".log")
