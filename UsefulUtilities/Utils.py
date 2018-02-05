@@ -78,10 +78,10 @@ def loggerUtil():
     fileHandler.setLevel(logging.DEBUG)
     # create file handler for errors
     errorFileHandler = logging.FileHandler(errorFile)
-    errorFileHandler.setLevel(logging.ERROR)
+    errorFileHandler.setLevel(logging.WARN)
     # create console handler with a higher log level
     consoleHabdler = logging.StreamHandler()
-    consoleHabdler.setLevel(logging.ERROR)
+    consoleHabdler.setLevel(logging.DEBUG)
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     fileHandler.setFormatter(formatter)
