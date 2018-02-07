@@ -3,7 +3,7 @@ import os,sys
 
 setup(
     name = "UsefulUtilities",
-    version = "1.0",
+    version = "1.1",
     python_requires='>=3',
-    packages = find_packages()
+    packages = ['UsefulUtilities']
     )
