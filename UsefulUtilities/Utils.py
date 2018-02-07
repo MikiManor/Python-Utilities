@@ -42,7 +42,7 @@ def getRegKeyValue(i_keyPath, i_hostName, i_valueToFind):
     import winreg
     hostName = r"\\" + i_hostName
     reg = winreg.ConnectRegistry(hostName, winreg.HKEY_LOCAL_MACHINE)
-    key = winreg.OpenKey(reg, keyPath)
+    key = winreg.OpenKey(reg, i_keyPath)
     value = winreg.QueryValueEx(key, i_valueToFind)[0]
     return(value)
 
